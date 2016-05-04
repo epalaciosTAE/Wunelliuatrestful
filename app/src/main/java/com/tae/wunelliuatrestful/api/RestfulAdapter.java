@@ -7,6 +7,7 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -67,7 +68,7 @@ public class RestfulAdapter {
             @Override
             public void onResponse(Call<Response<UserLocation>> call, Response<Response<UserLocation>> response) {
                 Log.i(TAG, "onResponse: " + response.message());
-
+                Toast.makeText(context, "Location Object result: " + response.message(), Toast.LENGTH_SHORT).show();
             }
 
             @Override

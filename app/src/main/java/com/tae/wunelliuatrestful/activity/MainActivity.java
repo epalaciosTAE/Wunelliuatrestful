@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.tae.wunelliuatrestful.adapter.ListAdapter;
 import com.tae.wunelliuatrestful.model.Constants;
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements OnReceiverListene
 
     @Override
     public void update(List<Route> routes) {
+        Toast.makeText(this, "Routes available", Toast.LENGTH_SHORT).show();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.listViewRoutes);
         ListAdapter adapter = new ListAdapter(routes, this);
         if (recyclerView != null) {

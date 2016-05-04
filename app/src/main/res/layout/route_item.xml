@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+              android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"
+              android:layout_marginTop="5dp"
+              android:layout_marginStart="10dp"
+
+              android:weightSum="1">
 
     <TextView
         android:id="@+id/txtRouteTitle"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"/>
+        android:gravity="end"
+        android:textAlignment="center"
+        android:layout_weight="0.4"/>
+
+    <View
+        android:layout_width="10dp"
+        android:layout_height="3dp"
+        android:layout_weight="0.1"
+        android:layout_gravity="center"
+        android:background="@color/colorAccent"/>
+
+
+    <TextView
+        android:id="@+id/txtRouteTitleEnd"
+        android:textAlignment="center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.4"/>
 </LinearLayout>

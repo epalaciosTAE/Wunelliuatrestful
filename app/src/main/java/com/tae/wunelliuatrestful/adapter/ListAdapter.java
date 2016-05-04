@@ -35,6 +35,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder holder, int position) {
         Route route = routes.get(position);
         holder.txtRouteTitle.setText(route.getStartLocality());
+        holder.txtRouteTitleEnd.setText(route.getEndLocality());
     }
 
     @Override
@@ -44,11 +45,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView txtRouteTitle;
+        private TextView txtRouteTitle, txtRouteTitleEnd;
 
         public ViewHolder(View itemView) {
             super(itemView);
             txtRouteTitle = (TextView) itemView.findViewById(R.id.txtRouteTitle);
+            txtRouteTitleEnd = (TextView) itemView.findViewById(R.id.txtRouteTitleEnd);
 
         }
     }
