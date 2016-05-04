@@ -24,7 +24,7 @@ public class RestfulReceiver extends BroadcastReceiver{
             List<Route> routes = intent.getParcelableArrayListExtra(Constants.EXTRA_ROUTES);
             listener.update(routes);
         } else {
-            listener.postLocation((Location) intent.getParcelableExtra(Constants.ACTION_LOCATION_PROVIDED));
+            listener.postLocation((Location) intent.getParcelableExtra(Constants.EXTRA_LOCATION));
         }
     }
 

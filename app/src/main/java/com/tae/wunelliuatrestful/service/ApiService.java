@@ -6,10 +6,16 @@ import android.content.Intent;
 import android.location.Location;
 import android.support.annotation.NonNull;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.tae.wunelliuatrestful.api.RestfulAdapter;
 import com.tae.wunelliuatrestful.model.Constants;
 import com.tae.wunelliuatrestful.model.Coordinate;
 import com.tae.wunelliuatrestful.model.UserLocation;
+
+import java.security.Timestamp;
+import java.util.Date;
 
 /**
  * Created by Eduardo on 04/05/2016.
@@ -44,15 +50,15 @@ public class ApiService extends IntentService {
 
     @NonNull
     private UserLocation createUserLocation(Intent intent) {
-        Location location = (Location) intent.getParcelableExtra(Constants.EXTRA_LOCATION);
+        Location location = intent.getParcelableExtra(Constants.EXTRA_LOCATION);
         Long ts = location.getTime();
-        String timestamp = ts.toString();
+        Date date = new Date(ts);
         Coordinate coordinate = new Coordinate(location.getLatitude(), location.getLongitude());
         return new UserLocation(
                 coordinate,
                 location.getSpeed(),
                 0,
                 (int)location.getAccuracy(),
-                timestamp);
+                date.toString());
     }
 }

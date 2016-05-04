@@ -9,6 +9,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.tae.wunelliuatrestful.model.Constants;
 import com.tae.wunelliuatrestful.model.Route;
 import com.tae.wunelliuatrestful.model.UserLocation;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -60,22 +62,26 @@ public class RestfulAdapter {
     }
 
     public void postLocation(UserLocation userLocation) {
-        Call<UserLocation> call = restfulService.postUserLocation(userLocation);
-        call.enqueue(new Callback<UserLocation>() {
+        Call<Response<UserLocation>> call = restfulService.postUserLocation(userLocation);
+        call.enqueue(new Callback<Response<UserLocation>>() {
             @Override
-            public void onResponse(Call<UserLocation> call, Response<UserLocation> response) {
+            public void onResponse(Call<Response<UserLocation>> call, Response<Response<UserLocation>> response) {
                 Log.i(TAG, "onResponse: " + response.message());
 
             }
 
             @Override
-            public void onFailure(Call<UserLocation> call, Throwable t) {
+            public void onFailure(Call<Response<UserLocation>> call, Throwable t) {
                 Log.e(TAG, "onFailure: " + t.getMessage());
             }
         });
     }
 
     private RestfulService getService(OkHttpClient client) {
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        client.newBuilder().addInterceptor(interceptor).build();
+
         return new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))

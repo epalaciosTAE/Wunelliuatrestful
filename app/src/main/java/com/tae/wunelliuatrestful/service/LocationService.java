@@ -23,8 +23,6 @@ import com.tae.wunelliuatrestful.model.Constants;
  */
 public class LocationService extends Service implements LocationListener {
 
-    private LocationManager locationManager;
-
     private static final String TAG = LocationService.class.getSimpleName();
 
     public static Intent makeIntent(Context context) {
@@ -61,7 +59,7 @@ public class LocationService extends Service implements LocationListener {
     }
 
     private void initLocationManager() {
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -73,13 +71,7 @@ public class LocationService extends Service implements LocationListener {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        boolean gps = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 1, this);
-        Location location = locationManager
-                .getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        if (gps) {
-        }
-
     }
 
     @Override
