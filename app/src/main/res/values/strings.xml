@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WunelliuatRestful</string>
+    <string name="routes">Routes</string>
+    <string name="location">location</string>
+</resources>
