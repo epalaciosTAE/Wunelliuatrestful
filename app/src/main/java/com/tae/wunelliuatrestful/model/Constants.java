@@ -10,4 +10,6 @@ public class Constants {
     public static final String EXTRA_LOCATION = "extra_lat";
     public static final String EXTRA_LONG = "extra_long";
     public static final String ACTION_POST_LOCATION = "com.tae.wunelliuatrestful.ACTION_POST_LOCATION";
+    public static final String EXTRA_ROUTE = "extra_location";
+    public static final int PERMISION_REQUEST = 11;
 }

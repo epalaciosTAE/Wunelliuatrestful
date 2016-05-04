@@ -9,7 +9,21 @@ public class EndCoordinate implements Parcelable{
     private Double lat;
     private Double lng;
 
+
     protected EndCoordinate(Parcel in) {
+        lat = in.readDouble();
+        lng = in.readDouble();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeDouble(lat);
+        dest.writeDouble(lng);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<EndCoordinate> CREATOR = new Creator<EndCoordinate>() {
@@ -24,12 +38,11 @@ public class EndCoordinate implements Parcelable{
         }
     };
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public Double getLat() {
+        return lat;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public Double getLng() {
+        return lng;
     }
 }

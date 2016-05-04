@@ -10,6 +10,8 @@ public class StartCoordinate implements Parcelable{
     private Double lng;
 
     protected StartCoordinate(Parcel in) {
+        lat = in.readDouble();
+        lng = in.readDouble();
     }
 
     public static final Creator<StartCoordinate> CREATOR = new Creator<StartCoordinate>() {
@@ -39,5 +41,7 @@ public class StartCoordinate implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeDouble(lat);
+        dest.writeDouble(lng);
     }
 }

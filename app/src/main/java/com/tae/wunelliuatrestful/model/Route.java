@@ -23,8 +23,27 @@ public class Route implements Parcelable{
         startCoordinate = in.readParcelable(StartCoordinate.class.getClassLoader());
         startDate = in.readParcelable(StartDate.class.getClassLoader());
         endLocality = in.readString();
+        endCoordinate = in.readParcelable(EndCoordinate.class.getClassLoader());
+        endDate = in.readParcelable(EndDate.class.getClassLoader());
         route = in.readString();
         invalidReason = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(startLocality);
+        dest.writeParcelable(startCoordinate, flags);
+        dest.writeParcelable(startDate, flags);
+        dest.writeString(endLocality);
+        dest.writeParcelable(endCoordinate, flags);
+        dest.writeParcelable(endDate, flags);
+        dest.writeString(route);
+        dest.writeString(invalidReason);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<Route> CREATOR = new Creator<Route>() {
@@ -83,18 +102,5 @@ public class Route implements Parcelable{
         return invalidReason;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(startLocality);
-        dest.writeParcelable(startCoordinate, flags);
-        dest.writeParcelable(startDate, flags);
-        dest.writeString(endLocality);
-        dest.writeString(route);
-        dest.writeString(invalidReason);
-    }
 }

@@ -5,8 +5,8 @@
               android:layout_height="wrap_content"
               android:layout_marginTop="5dp"
               android:layout_marginStart="10dp"
-
-              android:weightSum="1">
+              android:weightSum="1"
+              android:background="@drawable/separator">
 
     <TextView
         android:id="@+id/txtRouteTitle"
@@ -30,4 +30,5 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.4"/>
+
 </LinearLayout>

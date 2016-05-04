@@ -2,7 +2,6 @@ package com.tae.wunelliuatrestful.api;
 
 import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
@@ -10,7 +9,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.tae.wunelliuatrestful.model.Constants;
 import com.tae.wunelliuatrestful.model.Route;
 import com.tae.wunelliuatrestful.model.UserLocation;

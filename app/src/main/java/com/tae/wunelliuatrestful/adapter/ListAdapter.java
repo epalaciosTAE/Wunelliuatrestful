@@ -19,6 +19,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
 
     private List<Route> routes;
     private Context context;
+    private ItemClickListener listener;
 
     public ListAdapter(List<Route> routes, Context context) {
         this.routes = routes;
@@ -43,7 +44,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
         return routes.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public void setListener(ItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView txtRouteTitle, txtRouteTitleEnd;
 
@@ -51,7 +56,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
             super(itemView);
             txtRouteTitle = (TextView) itemView.findViewById(R.id.txtRouteTitle);
             txtRouteTitleEnd = (TextView) itemView.findViewById(R.id.txtRouteTitleEnd);
+            itemView.setOnClickListener(this);
+        }
 
+        @Override
+        public void onClick(View v) {
+            listener.clickOnListItem(routes.get(getAdapterPosition()));
         }
     }
 }
