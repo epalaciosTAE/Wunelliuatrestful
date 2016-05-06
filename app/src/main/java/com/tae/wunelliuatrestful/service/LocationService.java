@@ -15,6 +15,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.tae.wunelliuatrestful.model.Constants;
 
@@ -48,8 +49,7 @@ public class LocationService extends Service implements LocationListener {
 
     @Override
     public void onProviderDisabled(String provider) {
-        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-        startActivity(intent);
+        Toast.makeText(getApplicationContext(), "Location disable", Toast.LENGTH_SHORT).show();
     }
 
     @Override
