@@ -1,7 +1,6 @@
 package com.tae.wunelliuatrestful.activity;
 
 import android.Manifest;
-import android.app.FragmentTransaction;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,10 +13,7 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polyline;
-import com.google.android.gms.maps.model.PolylineOptions;
 import com.tae.wunelliuatrestful.R;
 import com.tae.wunelliuatrestful.model.Constants;
 import com.tae.wunelliuatrestful.model.Route;
@@ -59,7 +55,7 @@ public class RouteActivity  extends AppCompatActivity implements OnMapReadyCallb
                     90
             ));
         } else {
-            // Show rationale and request permission.
+            // request permission.
         }
     }
 }
